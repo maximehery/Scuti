@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="hotelView" id="hotelView" style="display: none;">
+    <div class="gradient" style="background-image: url(c_images/reception/india20_background_gradient.png);">
+        <div class="background-left" style="background-image: url(c_images/reception/india20_backgroundleft.png);">
+        </div>
+        <div class="background-right"
+             style="background-image: url(c_images/reception/background_right_easter2016.png);">
+        </div>
+        <div class="logo-drape" style="background-image: url(c_images/reception/reception_logo_drape.png);">
+        </div>
+    </div>
+</div>
+<div class="roomContainer" id="roomContainer" style="display: block;">
+</div>
+<div class="gridPurse" id="gridPurse">
+    <div class="part">
+        soon tkt
+    </div>
+    <div class="part">
+        <div class="hc">
+            <img src="sprites/hc_icon.png">
+            Rejoins
+        </div>
+    </div>
+    <div class="part">
+    </div>
+</div>
+<div class="bottom-bar">
+    <div class="bottom-bar-left">
+        <div class="arrow">
+        </div>
+        <div class="icons" style="background-image: url(sprites/icons/hotel_view.png);">
+        </div>
+        <div class="icons" onclick="openNavigator()" style="background-image: url(sprites/icons/navigator.png);">
+        </div>
+        <div class="icons" onclick="openCatalog()" style="background-image: url(sprites/icons/catalog.png);">
+        </div>
+        <div class="icons" style="background-image: url(sprites/icons/inventory.png);">
+        </div>
+        <div class="separator">
+        </div>
+    </div>
+</div>
+
+
+<div class="alert-frame" id="alert-frame" style="display: none;">
+    <div class="frame s3 alert" id="alert" style="width: 228px; height: 138px;">
+        <div class="header" id="alert_header">
+            <div class="left"></div>
+            <div class="center" id="alert_header_title">
+                Alerte
+            </div>
+            <div class="right"></div>
+            <div class="buttons">
+                <div class="close"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="left"></div>
+            <div class="center">
+                <div id="websocket_close_msg" style="margin: 10px 10px; width: calc(100% - 20px); text-align: center;">
+                    Serveur éteint.<br/><br/>Le serveur Websocket n'est pas allumé
+                </div>
+            </div>
+            <div class="right"></div>
+            <div class="bottom">
+                <div class="left"></div>
+                <div class="center"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="frame s3" id="catalog" style="display: none;width: 570px; height: 635px;">
+    <div class="header" id="catalog_header">
+        <div class="left"></div>
+        <div class="center" id="catalog_header_title"></div>
+        <div class="right"></div>
+        <div class="buttons">
+            <div class="close"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left"></div>
+        <div class="center">
+
+
+            <div class="tab-container" style=" top: 0px; width: 100%;">
+                <div class="center" id="tab-container" style="width: 550px;">
+
+
+                </div>
+            </div>
+            <script>
+
+            </script>
+            <div class="catalog-header" id="page_headline"
+                 style="top: 35px;left: -2px; background-image: url(./c_images/catalogue/catalog_frontpage_headline_shop_FR.png);">
+                <div class="icon" id="page_icon" style=" top: 28px; left: 25px;"></div>
+                <div class="text" id="page_caption"
+                     style="color: white; font-weight: 600; font-size: 19px; top: 11.5px; left: 80px;">Accueil
+                </div>
+                <div class="text" id="page_text1"
+                     style="color: white; font-weight: 400; font-size: 13px; top: 34.5px; left: 80px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco.
+                </div>
+            </div>
+            <div class="front-page" id="frontpage" style="display: none;">
+
+                <div class="featured_page"
+                     style="top: 0px; left: 0px; width: 184px; height: 460px; background-image: url(https://images.habbo.com/c_images/catalogue/feature_cata_vert_india20_tiger.png);">
+                    <div class="featured_title">
+                        slot_1
+                    </div>
+                </div>
+
+                <div class="featured_page"
+                     style="top: 0px; right: 0px; width: 356px; height: 126px; background-image: url(https://images.habbo.com/c_images/catalogue/feature_cata_hort_india20_bun3.png);">
+                    <div class="featured_title">
+                        slot_2
+                    </div>
+                </div>
+
+                <div class="featured_page"
+                     style="top: 133px; right: 0px; width: 356px; height: 126px; background-image: url(https://images.habbo.com/c_images/catalogue/feature_cata_hort_santo17_bun2.png);">
+                    <div class="featured_title">
+                        slot_3
+                    </div>
+                </div>
+
+                <div class="featured_page"
+                     style="top: 266px; right: 0px; width: 356px; height: 126px; background-image: url(https://images.habbo.com/c_images/catalogue/feature_cata_hort_india20_newclothing.png);">
+                    <div class="featured_title">
+                        slot_4
+                    </div>
+                </div>
+
+            </div>
+            <div class="default">
+                <div class="catalog-right">
+                    <div class="default_3x3" id="default_3x3" style="display: none;">
+                        <div class="page_teaser" id="page_teaser">
+                        </div>
+                        <div class="item_display">
+                        </div>
+                    </div>
+                    <div class="pets2" id="pets2" style="display: none;">
+                        <div class="page_teaser" id="page_teaser">
+                        </div>
+                        <div class="page_text2" id="page_text2">
+                            Deux, trois trucs à savoir:
+                        </div>
+                        <div class="page_text_details" id="page_text_details">
+                            - Pour décorer ton appart, il suffit d'acheter le mobilier que tu souhaites et de le
+                            récupérer dans ton inventaire pour ensuite pouvoir le poser dans ton appartement.
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-left">
+                    <input class="catalog-search" placeholder="Chercher ici" type="text">
+                    <div class="catalog-pages" id="catalogPages">
+                        <div class="subtab">
+                            <div class="pagetab">
+                                <div class="pageicon" style="background-image: url(c_images/catalogue/icon_146.png);">
+                                </div>
+                                <div class="pagecaption">
+                                    Magots
+                                    <div class="pagearrow"></div>
+                                </div>
+
+                            </div>
+                            <div class="subpagetab">
+                                <div class="subpageicon"
+                                     style="background-image: url(c_images/catalogue/icon_146.png);">
+                                </div>
+                                <div class="subpagecaption">
+                                    Magots
+                                    <div class="pagearrow"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagetab">
+                            <div class="pageicon" style="background-image: url(c_images/catalogue/icon_206.png);">
+                            </div>
+                            <div class="pagecaption">
+                                Room Bundle
+                            </div>
+                        </div>
+                        <div class="pagetab">
+                            <div class="pageicon" style="background-image: url(c_images/catalogue/icon_291.png);">
+                            </div>
+                            <div class="pagecaption">
+                                Palais Indien
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right"></div>
+        <div class="bottom">
+            <div class="left"></div>
+            <div class="center"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+</div>
+<div class="frame s3" id="navigator" style="width: 426px; height: 535px; display: none;">
+    <div class="header" id="navigator_header">
+        <div class="left"></div>
+        <div class="center" id="navigator_header_title"></div>
+        <div class="right"></div>
+        <div class="buttons">
+            <div class="close"></div>
+            <div class="help"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left"></div>
+        <div class="center">
+
+            <div class="tab-container" style=" top: 0px; width: 100%; background-color: #fff;">
+                <div class="saved-search"></div>
+                <div class="center" style="width: 353px; right: 23px; float: right;">
+
+                    <div class="tab" style="">
+                        <div class="tleft"></div>
+                        <div class="tcenter" id="official_rooms"></div>
+                        <div class="tright"></div>
+                        <script>
+                            $('.tab').click(function () {
+                                $('.tab').removeClass("active");
+                                $(this).addClass("active");
+
+                            });
+                        </script>
+                    </div>
+                    <div class="tab" style="width: 600px;">
+                        <div class="tleft"></div>
+                        <div class="tcenter" id="all_rooms"></div>
+                        <div class="tright"></div>
+                        <script>
+                            $('.tab').click(function () {
+                                $('.tab').removeClass("active");
+                                $(this).addClass("active");
+
+                            });
+                        </script>
+                    </div>
+                    <div class="tab" style="">
+                        <div class="tleft"></div>
+                        <div class="tcenter" id="events_rooms"></div>
+                        <div class="tright"></div>
+                        <script>
+                            $('.tab').click(function () {
+                                $('.tab').removeClass("active");
+                                $(this).addClass("active");
+
+                            });
+                        </script>
+                    </div>
+                    <div class="tab" style="width: 500px;">
+                        <div class="tleft"></div>
+                        <div class="tcenter" id="myworld_rooms"></div>
+                        <div class="tright"></div>
+                        <script>
+                            $('.tab').click(function () {
+                                $('.tab').removeClass("active");
+                                $(this).addClass("active");
+
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right"></div>
+        <div class="bottom">
+            <div class="left"></div>
+            <div class="center"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+</div>
+<!-- Catalog -->
+<script src="js/catalog/catalog.js"></script>
+<script src="core.js"></script>
+
+<!-- Canvas -->
+<script src="js/pixi.js"></script>
+<script src="js/client.js" type="module"></script>
+
+
+<script src="js/websockets/websockets.js"></script>
+<script src="js/catalog/catalogTab.js"></script>
+<script src="js/catalog/catalogPages.js"></script>
+</body>
+</html>

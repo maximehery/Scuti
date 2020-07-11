@@ -1,0 +1,3 @@
+function toggleCatalog() {
+    $("#catalog").toggle();
+}
