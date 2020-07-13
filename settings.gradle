@@ -6,3 +6,6 @@ project(":discovery-service").projectDir = file("discovery-service")
 
 include 'gameserver-service'
 project(":gameserver-service").projectDir = file("gameserver-service")
+
+include 'client-service'
+project(":client-service").projectDir = file("client-service")
