@@ -14,8 +14,11 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'quotes': "off",
-    'no-trailing-spaces': "off"
+    quotes: "off",
+    'no-trailing-spaces': "off",
+    'new-cap': 'off',
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
   },
   overrides: [
     {

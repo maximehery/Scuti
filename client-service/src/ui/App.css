@@ -10,7 +10,7 @@ body {
     font-family: 'Ubuntu', sans-serif;
     overflow: hidden;
     background-color: #212225;
-    background-image: url('https://raw.githubusercontent.com/kozennnn/scuti-client/master/UI%20Concept/client/img/hotel_left.png'), url('https://raw.githubusercontent.com/kozennnn/scuti-client/master/UI%20Concept/client/img/hotel_right.png');
+    background-image: url('https://habboo-a.akamaihd.net/c_images/reception/habbo20_background_left.png'), url('https://habboo-a.akamaihd.net/c_images/reception/background_right_easter2016.png');
     background-position: bottom left, bottom right;
     background-repeat: no-repeat, no-repeat;
 }
@@ -19,7 +19,7 @@ canvas {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: -1;
 }
 
 button {

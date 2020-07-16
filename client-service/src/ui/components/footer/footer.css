@@ -5,7 +5,6 @@ footer {
     height: 60px;
     width: 100%;
     display: flex;
-    z-index: 2;
 }
 
 footer .footer_container {
