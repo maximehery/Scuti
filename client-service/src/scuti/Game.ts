@@ -14,10 +14,10 @@ export default class Game {
 
   loadGame (): Promise<void> {
     this.isStarting = true
-    this.uiManager.postLoading("Initializing game engine")
+    this.uiManager.postLoading('Initializing game engine')
     return Promise.all([
     ]).then(() => {
-      this.uiManager.postLoading("Connecting to server")
+      this.uiManager.postLoading('Connecting to server')
     })
   }
 
@@ -25,7 +25,7 @@ export default class Game {
     this.engine.onEnterRoom()
 
     this.engine.getLogicStage().addChild(this.engine.getLogicStage())
-    this.uiManager.log("Loaded room")
+    this.uiManager.log('Loaded room')
   }
 
   onMouseMove = (x: number, y: number, isMouseDragging: boolean) => {
@@ -57,6 +57,6 @@ export default class Game {
 
   stop () {
     this.uiManager.onGameStop()
-    console.log("Stopping game...")
+    console.log('Stopping game...')
   }
 }

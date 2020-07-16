@@ -52,8 +52,8 @@ import ScutiEnvironement from '@/scuti/ScutiEnvironement'
       let errorMessage = err
 
       if (err instanceof Error) {
-        if (err.message.includes("WebGL unsupported")) {
-          errorMessage = "Please enable hardware acceleration"
+        if (err.message.includes('WebGL unsupported')) {
+          errorMessage = 'Please enable hardware acceleration'
         }
       }
       this.$data.error = errorMessage

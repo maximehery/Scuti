@@ -18,7 +18,7 @@ import GenericSplashComponent from '@/ui/components/splash/GenericSplashComponen
   `
 })
 class LoadingComponent extends Vue {
-  @Prop({ type: String }) loadingText
+  @Prop({ type: String }) loadingText: any
 }
 
 export default LoadingComponent

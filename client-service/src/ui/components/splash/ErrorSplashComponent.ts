@@ -12,7 +12,7 @@ import GenericSplashComponent from '@/ui/components/splash/GenericSplashComponen
   `
 })
 class ErrorSplashComponent extends Vue {
-  @Prop({ type: String }) errorText
+  @Prop({ type: String }) errorText: any
 }
 
 export default ErrorSplashComponent

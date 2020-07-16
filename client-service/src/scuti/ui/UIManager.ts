@@ -12,11 +12,11 @@ export default class UIManager {
   }
 
   log (text: string) {
-    console.log("Log: " + text)
+    console.log('Log: ' + text)
   }
 
   postLoading (text: string) {
-    console.log("Loading: " + text)
+    console.log('Loading: ' + text)
     this.onLoadPost(text)
   }
 }

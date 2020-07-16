@@ -21,7 +21,7 @@ import './header.css'
   `
 })
 class HeaderComponent extends Vue {
-  @Prop({ type: Number, default: 900000 }) credits
+  @Prop({ type: Number, default: 900000 }) credits: any
 
   getMoneyNumber (value: number) {
     return value.toLocaleString(navigator.language, {
